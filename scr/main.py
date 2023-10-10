@@ -1,4 +1,3 @@
-from flask import Flask
 from settings import HOST, PORT, DEBUG
 from flask import Flask, render_template
 

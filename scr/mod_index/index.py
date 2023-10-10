@@ -8,6 +8,11 @@ bp_index = Blueprint('index', __name__, url_prefix="/", template_folder='templat
 def formListaIndex():
     return render_template('formIndex.html'), 200
 
+@bp_index.route('/', methods=['GET'])
+def formIndex():
+    return render_template('formListaIndex.html')
+
+
 
 '''
 Rota antiga de app...
