@@ -4,7 +4,7 @@ bp_cliente = Blueprint('cliente', __name__, url_prefix="/cliente", template_fold
 
 ''' rotas dos formulários '''
 
-@bp_cliente.route('/')
+@bp_cliente.route('/', methods=['GET', 'POST'])
 def formListaCliente():
     return render_template('formListaCliente.html'), 200
 
