@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Produto</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link para um arquivo CSS externo -->
 </head>
 
 {% extends "base.html" %}
@@ -11,30 +12,35 @@
 {% block title %}Produto{% endblock %}
 
 {% block content %}
-<h1>Produto</h1>
-<p class="important">Seja bem vindo!</p>
+<div class="container">
+    <header>
+        <h1>Produto</h1>
+        <p class="important">Seja bem-vindo!</p>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index.formListaIndex') }}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<ul>
-    <li><a href="{{ url_for('produto.formListaProduto') }}">Home</a></li>
-</ul>
+<section class="produtos">
+        <h2>Produtos</h2>
+        <form action="{{ url_for('produto.formListaProduto') }}" method="POST">
+            <button type="submit" name="formNovo" class="botao-novo">Novo Produto</button>
+        </form>
 
-<form action="{{ url_for('produto.formListaProduto') }}" method="POST">
-    <h1>Produtos</h1>
-    <button type="submit" name="formNovo">Novo Produto</button>
-</form>
-
-<table>
+<table class="tabela-produtos">
     <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Nome</th>
             <th scope="col">Grupo</th>
-            <th scope="col">Senha</th>
+            <th scope="col">Ação</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <th scope="row">...</th>
+            <th scope="row">1</th>
             <td>...</td>
             <td>...</td>
             <td>...</td>
@@ -44,31 +50,31 @@
         </tr>
     </tbody>
 </table>
+</section>
 
-<form name="formAdicionar" id="formAdicionar" action="" method="POST">
-    <h1>Produto</h1>
-
-    <input type="text" name="id" id="id" value="" placeholder="Código" readonly>
-    <label for="id">Código</label>
-    <br>
-    <input type="text" name="nome" id="nome" value="" placeholder="Nome Produto" maxlength="100" autofocus required>
-    <label for="nome">Nome Produto</label>
-    <br>
-    <select name="grupo" id="grupo" aria-label="Grupo">
+<section class="adicionar-produto">
+    <h2>Adicionar Produto</h2>
+    <form name="formAdicionar" id="formAdicionar" action="" method="POST">
+        <input type="text" name="id" id="id" value="" placeholder="Código" readonly>
+        <label for="id">Código</label>
+        <input type="text" name="nome" id="nome" value="" placeholder="Nome Produto" maxlength="100" autofocus required>
+        <label for="nome">Nome Produto</label>
+        <select name="grupo" id="grupo" aria-label="Grupo">
             <option value="0">Atendente</option>
             <option value="1">Caixa</option>
             <option value="2">Adm</option>
-    </select>
-    <label for="grupo">Grupo</label>
-    <br>
-    <input type="password" name="senha" id="senha" value="Bolinhas" placeholder="Senha" required>
-    <label for="senha">Senha</label>
-    <br>
-    <input type="password" name="resenha" id="resenha" value="Bolinhas" placeholder="Senha" required>
-    <label for="resenha">reSenha</label>
-    <br>
-    <button type='submit' name='salvaUsuarioDB' id='salvaUsuarioDB'><i class='fas fa-save'></i> Salvar</button>
-</form>
+        </select>
+        <label for="grupo">Grupo</label>
+        <input type="password" name="senha" id="senha" value="Bolinhas" placeholder="Senha" required>
+        <label for="senha">Senha</label>
+        <input type="password" name="resenha" id="resenha" value="Bolinhas" placeholder="Senha" required>
+        <label for="resenha">reSenha</label>
+        <button type='submit' name='salvaUsuarioDB' id='salvaUsuarioDB' class="botao-salvar">
+            <i class='fas fa-save'></i> Salvar
+        </button>
+    </form>
+</section>
+</div>
 {% endblock %}
 
 </html>

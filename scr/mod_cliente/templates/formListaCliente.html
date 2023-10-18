@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Cliente</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link para um arquivo CSS externo -->
 </head>
 
 {% extends "base.html" %}
@@ -11,74 +12,79 @@
 {% block title %}Cliente{% endblock %}
 
 {% block content %}
-<h1>Cliente</h1>
-<p class="important">Seja bem vindo!</p>
+<div class="container">
+    <header>
+        <h1>Cliente</h1>
+        <p class="important">Seja bem-vindo!</p>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index.formListaIndex') }}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<ul>
-    <li><a href="{{ url_for('cliente.formListaCliente') }}">Home</a></li>
-</ul>
+<section class="clientes">
+        <h2>Clientes</h2>
+        <form action="{{ url_for('cliente.formListaCliente') }}" method="POST">
+            <button type="submit" name="formNovo" class="botao-novo">Novo Cliente</button>
+        </form>
 
-<form action="{{ url_for('cliente.formListaCliente') }}" method="POST">
-    <h1>Clientes</h1>
-    <button type="submit" name="formNovo">Novo Cliente</button>
-</form>
+    <table class="tabela-clientes">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Matrícula</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Grupo</th>
+                <th scope="col">Senha</th>
+                <th scope="col">Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td><i class="fas fa-edit"></i></td>
+                <td><i class="fas fa-trash"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 
-<table>
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">CPF</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">Grupo</th>
-            <th scope="col">Senha</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">...</th>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td><i class="fas fa-edit"></i></td>
-            <td><i class="fas fa-trash"></i></td>
-        </tr>
-    </tbody>
-</table>
-
-<form name="formAdicionar" id="formAdicionar" action="" method="POST">
-    <h1>Cliente</h1>
-
-    <input type="text" name="id" id="id" value="" placeholder="Código" readonly>
-    <label for="id">Código</label>
-    <br>
-    <input type="text" name="nome" id="nome" value="" placeholder="Nome Cliente" maxlength="100" autofocus required>
-    <label for="nome">Nome Cliente</label>
-    <br>
-    <input type="text" name="cpf" id="cpf" value="" placeholder="CPF" maxlength="15" required>
-    <label for="cpf">CPF</label>
-    <br>
-    <input type="tel" name="telefone" id="telefone" value="" placeholder="Telefone" maxlength="15" required>
-    <label for="telefone" class="form-label">Telefone</label>
-    <br>
-    <select name="grupo" id="grupo" aria-label="Grupo">
+<section class="adicionar-cliente">
+    <h2>Adicionar Cliente</h2>
+    <form name="formAdicionar" id="formAdicionar" action="" method="POST">
+        <input type="text" name="id" id="id" value="" placeholder="Código" readonly>
+        <label for="id">Código</label>
+        <input type="text" name="nome" id="nome" value="" placeholder="Nome Cliente" maxlength="100" autofocus required>
+        <label for="nome">Nome Cliente</label>
+        <input type="text" name="cpf" id="cpf" value="" placeholder="CPF" maxlength="15" required>
+        <label for="cpf">CPF</label>
+        <input type="tel" name="telefone" id="telefone" value="" placeholder="Telefone" maxlength="15" required>
+        <label for="telefone" class="form-label">Telefone</label>
+        <select name="grupo" id="grupo" aria-label="Grupo">
             <option value="0">Atendente</option>
             <option value="1">Caixa</option>
             <option value="2">Adm</option>
-    </select>
-    <label for="grupo">Grupo</label>
-    <br>
-    <input type="password" name="senha" id="senha" value="Bolinhas" placeholder="Senha" required>
-    <label for="senha">Senha</label>
-    <br>
-    <input type="password" name="resenha" id="resenha" value="Bolinhas" placeholder="Senha" required>
-    <label for="resenha">reSenha</label>
-    <br>
-    <button type='submit' name='salvaUsuarioDB' id='salvaUsuarioDB'><i class='fas fa-save'></i> Salvar</button>
-</form>
+        </select>
+        <label for="grupo">Grupo</label>
+        <input type="password" name="senha" id="senha" value="Bolinhas" placeholder="Senha" required>
+        <label for="senha">Senha</label>
+        <input type="password" name="resenha" id="resenha" value="Bolinhas" placeholder="Senha" required>
+        <label for="resenha">reSenha</label>
+        <button type='submit' name='salvaUsuarioDB' id='salvaUsuarioDB' class="botao-salvar">
+            <i class='fas fa-save'></i> Salvar
+        </button>
+    </form>
+</section>
+</div>
 {% endblock %}
 
 </html>
