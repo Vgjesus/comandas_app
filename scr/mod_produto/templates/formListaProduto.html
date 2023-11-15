@@ -1,80 +1,27 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Produto</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link para um arquivo CSS externo -->
-</head>
-
-{% extends "base.html" %}
-
-{% block title %}Produto{% endblock %}
-
-{% block content %}
-<div class="container">
-    <header>
-        <h1>Produto</h1>
-        <p class="important">Seja bem-vindo!</p>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('index.formListaIndex') }}">Home</a></li>
-            </ul>
-        </nav>
-    </header>
-
-<section class="produtos">
-        <h2>Produtos</h2>
-        <form action="{{ url_for('produto.formListaProduto') }}" method="POST">
-            <button type="submit" name="formNovo" class="botao-novo">Novo Produto</button>
-        </form>
-
-<table class="tabela-produtos">
-    <thead>
+<table class="table table-striped table-hover align-middle">
+    <thead class="table-dark">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Grupo</th>
-            <th scope="col">Ação</th>
+            <th scope="col">nome</th>
+            <th scope="col">descricao</th>
+            <th scope="col">valor_unitario</th>
+            <th scope="col">foto</th>
         </tr>
     </thead>
+
     <tbody>
+        {% if result %}
+        {% for row in result %}
         <tr>
-            <th scope="row">1</th>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
+            <th scope="row"> {{ row['id_produto'] }}</th>
+            <td> {{ row['nome'] }}</td>
+            <td> {{ row['descricao'] }}</td>
+            <td> {{ row['valor_unitario'] }}</td>
+            <td> {{ row['foto'] }}</td>
             <td><i class="fas fa-edit"></i></td>
             <td><i class="fas fa-trash"></i></td>
         </tr>
+        {% endfor %}
+        {% endif %}
     </tbody>
 </table>
-</section>
-
-<section class="adicionar-produto">
-    <h2>Adicionar Produto</h2>
-    <form name="formAdicionar" id="formAdicionar" action="" method="POST">
-        <input type="text" name="id" id="id" value="" placeholder="Código" readonly>
-        <label for="id">Código</label>
-        <input type="text" name="nome" id="nome" value="" placeholder="Nome Produto" maxlength="100" autofocus required>
-        <label for="nome">Nome Produto</label>
-        <select name="grupo" id="grupo" aria-label="Grupo">
-            <option value="0">Atendente</option>
-            <option value="1">Caixa</option>
-            <option value="2">Adm</option>
-        </select>
-        <label for="grupo">Grupo</label>
-        <input type="password" name="senha" id="senha" value="Bolinhas" placeholder="Senha" required>
-        <label for="senha">Senha</label>
-        <input type="password" name="resenha" id="resenha" value="Bolinhas" placeholder="Senha" required>
-        <label for="resenha">reSenha</label>
-        <button type='submit' name='salvaUsuarioDB' id='salvaUsuarioDB' class="botao-salvar">
-            <i class='fas fa-save'></i> Salvar
-        </button>
-    </form>
-</section>
-</div>
-{% endblock %}
-
-</html>

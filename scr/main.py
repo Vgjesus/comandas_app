@@ -29,4 +29,4 @@ app.register_blueprint(bp_produto)
 
 if __name__ == "__main__":
     """ Inicia o aplicativo WEB Flask """
-    app.run(host=HOST, port=PORT, debug=DEBUG)
+    app.run(host=HOST, port=PORT, debug=True)
