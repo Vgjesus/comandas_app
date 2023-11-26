@@ -1,0 +1,69 @@
+/* Estilos gerais para a página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o cabeçalho */
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Estilos para o título */
+h1 {
+    font-size: 36px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o parágrafo importante */
+.important {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Estilos para a lista */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #0073e6;
+}
+
+/* Estilos para o menu de navegação */
+nav {
+    background-color: #0073e6;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+/* Estilos para o rodapé */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}

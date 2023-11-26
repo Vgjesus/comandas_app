@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Produtos{% endblock %}
+
+{% block content %}
+
+<p>
+    <a href="{{ url_for('produto.formProduto') }}" 
+        class="btn btn-mini btn-warning" 
+        role="button" aria-pressed="true">Criar
+    </a>
+</p>
+
+<table class="table table-striped table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Valor Unitário</th>
+            <th scope="col">Foto</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% if result %}
+            {% for row in result %}
+            <tr>
+                <th scope="row"> {{ row['id_produto'] }}</th>
+                <td> {{ row['nome'] }}</td>
+                <td> {{ row['descricao'] }}</td>
+                <td> {{ row['valor_unitario'] }}</td>
+                <td> {{ row['foto'] }}</td>
+                <td><a class="btn btn-mini btn-warning"  href="{{ url_for('produto.formEdit', id_produto=row['id_produto']) }}"><i class="fas fa-edit"></i></a></td>
+                <td><a class="btn btn-mini btn-warning"  href="{{ url_for('produto.remove_produto', id_produto=row['id_produto']) }}"><i class="fas fa-trash"></i></a></td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

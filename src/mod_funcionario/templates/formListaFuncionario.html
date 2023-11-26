@@ -1,13 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Funcionários{% endblock %}
+
+{% block content %}
+
+<p>
+    <a href="{{ url_for('funcionario.formFuncionario') }}" 
+        class="btn btn-mini btn-warning" 
+        role="button" aria-pressed="true">Criar
+    </a>
+</p>
+
 <table class="table table-striped table-hover align-middle">
     <thead class="table-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Nome</th>
-            <th scope="col">Matricula</th>
+            <th scope="col">Matrícula</th>
             <th scope="col">CPF</th>
             <th scope="col">Telefone</th>
             <th scope="col">Grupo</th>
             <th scope="col">Senha</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
     </thead>
 
@@ -22,10 +37,11 @@
             <td> {{ row['telefone'] }}</td>
             <td> {{ row['grupo'] }}</td>
             <td> {{ row['senha'] }}</td>
-            <td><i class="fas fa-edit"></i></td>
-            <td><i class="fas fa-trash"></i></td>
+            <td><a class="btn btn-mini btn-warning"  href="{{ url_for('funcionario.formEdit', id_funcionario=row['id_funcionario']) }}"><i class="fas fa-edit"></i></a></td>
+            <td><a class="btn btn-mini btn-warning"  href="{{ url_for('funcionario.remove_funcionario', id_funcionario=row['id_funcionario']) }}"><i class="fas fa-trash"></i></a></td>
         </tr>
         {% endfor %}
         {% endif %}
     </tbody>
 </table>
+{% endblock %}

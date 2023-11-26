@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Produto{% endblock %}
+{% block content %}
+<form action="{{ url_for('produto.update') }}" method="POST">
+    <h1>Produto</h1>
+
+    <div class="form-group">
+        <label for="id_produto">Código</label>
+        <input class="form-control" type="text" name="id_produto" id="id_produto" value="{{ produto.id_produto }}" placeholder="ID">
+    </div>
+
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input class="form-control" type="text" name="nome" id="nome" value="{{ produto.nome }}" placeholder="Nome do Produto" autofocus required>
+    </div>
+
+    <div class="form-group">
+        <label for="valor_unitario">Valor</label>
+        <input class="form-control" type="number" name="valor_unitario" id="valor_unitario" value="{{ produto.valor_unitario }}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <textarea class="form-control" name="descricao" id="descricao" placeholder="Descrição do Produto" value="{{ produto.descricao }}" required></textarea>
+    </div>
+
+    <p style="margin-top: 5px;">
+        <button class="btn btn-primary" type='submit' name='salvaProdutoDB' id='salvaProdutoDB'>
+            <i class='fas fa-save'></i> Atualizar
+        </button>
+    </p>
+</form>
+{% endblock %}

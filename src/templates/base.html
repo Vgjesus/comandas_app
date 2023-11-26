@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
-    <title>{% block title %}{% endblock %} - AbcBolinhas</title>
+    <title>{% block title %}{% endblock %}</title>
 
     {% block style %}{% endblock %}
     <style>
@@ -18,31 +18,35 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.3.2-dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-6.4.2-web/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='sweetalert2/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 
 <body>
 
-    {% block menu %}
-    <ul>
-        <li><a href="{{ url_for('index.formListaIndex') }}">Home</a></li>
-        <li><a href="{{ url_for('funcionario.formListaFuncionario') }}">Funcionário - lista</a></li>
-        <li><a href="{{ url_for('funcionario.formFuncionario') }}">Funcionário - cadastra</a></li>
-        <li><a href="{{ url_for('cliente.formListaCliente') }}">Cliente - lista</a></li>
-        <li><a href="{{ url_for('cliente.formCliente') }}">Cliente - cadastra</a></li>
-        <li><a href="{{ url_for('produto.formListaProduto') }}">Produto - lista</a></li>
-        <li><a href="{{ url_for('produto.formProduto') }}">Produto - cadastra</a></li>
-    </ul>
-    {% endblock %}
+    <header>
+        <h1>PASTELARIA ZÉ</h1>
+    </header>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{{ url_for('index.formListaIndex') }}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="{{ url_for('cliente.formListaCliente') }}">Clientes</a>
+            <a class="nav-item nav-link" href="{{ url_for('funcionario.formListaFuncionario') }}">Funcionários</a>
+            <a class="nav-item nav-link" href="{{ url_for('produto.formListaProduto') }}">Produtos</a>
+            <a class="nav-item nav-link" href="{{ url_for('login.logoff') }}"><i class="fas fa-door-open"></i> SAIR</a>
+        </div>
+        </div>
+    </nav>
 
     <div class="container-fluid mt-3">
         {% block content %}{% endblock %}
     </div>
-
-    {% block footer %}
-    &copy; Copyright 2022 by <a href="http://127.0.0.1:5000/">AbcBolinhas</a>.
-    {% endblock %}
 
     <!-- monitorar log do navegador, pois a ordem interfere -->
     <script src="{{ url_for('static', filename='jquery-3.7.1.js') }}"></script>
